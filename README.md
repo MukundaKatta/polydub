@@ -1,32 +1,47 @@
 # PolyDub
 
-> Dub your videos. In every language.
+Lip-synced video dubbing in 40+ languages, at creator-friendly prices.
 
-Upload once. Get perfectly lip-synced dubs in 40 plus languages, at creator-friendly prices.
+**Status:** v0 skeleton — landing page + /try dub-preview route. Full AI dubbing not yet wired.
 
-## What it does
+**Landing:** https://polydub.vercel.app
 
-- **Lip-sync, not lip-service** — Your mouth actually matches the new audio, in every language you ship to.
-- **Fast turnarounds** — Ten minutes from upload to export. No waiting days for a human dub team.
-- **Flat-rate pricing** — Twenty dollars a month, unlimited videos. No per-minute nonsense.
+---
 
-## Why
+## Stack
 
-Creator tools. Part of a 20-product exploration of high-demand consumer and SMB markets.
+| Layer | Choice |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Language | TypeScript (strict) |
+| Styling | Tailwind v4 |
+| Fonts | Inter via `next/font/google` |
+| Hosting | Vercel (zero config) |
+| Waitlist | https://waitlist-api-sigma.vercel.app |
 
-## Status
+## Run locally
 
-Landing page live. Product in planning.
+```bash
+pnpm install
+pnpm dev
+```
 
-- **Live**: https://mukundakatta.github.io/polydub/
+Open http://localhost:3000.
 
-## Stack (when built)
+## Deploy
 
-- Next.js 16 (App Router)
-- Supabase for auth + data
-- Stripe for payments
-- Deployed on Vercel
+Push to `main` — Vercel picks it up automatically. No environment variables required.
 
-## Local preview
+## Routes
 
-Just open `index.html` in a browser — it is a static landing page with the Tailwind CDN.
+| Route | Description |
+|---|---|
+| `/` | Landing page (original copy + design preserved) |
+| `/try` | v0 dub preview — describe your video, pick a language, see a mocked dubbed-preview stub |
+| `/api/waitlist` | `POST { email, product: "polydub" }` → forwards to waitlist-api-sigma |
+
+## What's next
+
+- Wire real AI dubbing behind `/try`
+- Actual video upload and processing pipeline
+- Auth + per-user dub history
